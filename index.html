@@ -13,17 +13,36 @@
 <div class="glow-bottom"></div>
 
 <nav class="navbar">
-    <div class="nav-logo">
-        <img src="logo2.svg" alt="Zechtical Industries Logo">
+
+  <!-- LEFT: LOGO -->
+  <div class="nav-logo">
+    <img src="logo2.svg" alt="logo">
+  </div>
+
+  <div class="nav-right-wrapper">
+
+    <!-- LINKS -->
+    <div class="nav-links" id="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Projects</a>
+      <a href="#">About</a>
+
+      <!-- 👇 CART MOVED INTO MENU -->
+      <a href="#" class="mobile-cart"> 🛒</a>
     </div>
 
-    <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Shop</a>
-        <a href="#">Orders</a>
-        <a href="#">Zaven</a>
-        <a href="about.html">About</a>
+    <!-- DESKTOP CART ONLY -->
+    <a href="#" class="cart desktop-cart">🛒</a>
+
+    <!-- HAMBURGER -->
+    <div class="menu-btn" id="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+
+  </div>
+
 </nav>
 
 <section class="hero">
@@ -82,15 +101,10 @@
     </div>
 </section>
 
-
-<!-- FEATURED SYSTEM -->
 <section class="feature-section">
-
     <div class="feature-card">
-
         <div class="feature-left">
             <h2 class="section-title">Integrated Intelligence</h2>
-
             <p class="feature-desc">
                 A seamless fusion of hardware, AI, and automation — designed
                 to create systems that think, adapt, and evolve.
@@ -100,27 +114,18 @@
         <div class="feature-right">
             <div class="feature-core"></div>
         </div>
-
     </div>
-
 </section>
 
-<!-- VISION / ABOUT PREVIEW -->
 <section class="about-preview">
-
     <h2 class="section-title">Our Vision</h2>
-
     <p class="about-text">
-        Zechtical Industries is focused on building the next generation of intelligent systems — where software, machines, and intelligence operate as one unified ecosystem.
+        Zechtical Industries is focused on building the next generation of intelligent systems.
     </p>
-
     <a href="about.html" class="about-btn">Learn More</a>
-
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
-
     <div class="footer-left">
         <p class="footer-logo">ZECHTICAL</p>
         <p class="footer-tag">Engineering the Future</p>
@@ -131,7 +136,6 @@
         <a href="#">Projects</a>
         <a href="#">About</a>
     </div>
-
 </footer>
 
 <script src="script.js"></script>

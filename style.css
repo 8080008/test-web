@@ -71,7 +71,8 @@ body::after {
 }
 
 .nav-logo img {
-    height: 26px;
+    height: 28px;
+    filter: drop-shadow(0 0 6px rgba(0,247,165,0.5));
 }
 
 .nav-links {
@@ -82,7 +83,7 @@ body::after {
 }
 
 .nav-links a {
-    font-size: clamp(14px, 2vw, 17px);
+    font-size: auto;
     color: white;
     text-decoration: none;
     padding: 4px 6px;
@@ -188,6 +189,25 @@ body::after {
     border: 1px solid var(--border);
     backdrop-filter: blur(20px);
     padding: 28px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ripple */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0,247,165,0.35);
+    transform: scale(0);
+    animation: ripple-effect 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-effect {
+    to {
+        transform: scale(8);
+        opacity: 0;
+    }
 }
 
 .welcome-card .main-card {
@@ -487,3 +507,229 @@ body::after {
         margin-top: 20px;
     }
 }
+
+/* ===== MENU BUTTON ===== */
+.menu-btn {
+    width: 34px;
+    height: 24px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1100;
+    position: relative;
+}
+
+.menu-btn span {
+    height: 2px;
+    width: 100%;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: 0.4s ease;
+}
+
+/* ===== MORPH INTO Z ===== */
+.menu-btn.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.menu-btn.active span:nth-child(2) {
+    transform: translateX(4px) rotate(-25deg) scaleX(0.8);
+}
+
+.menu-btn.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(45deg);
+}
+
+/* Neon glow */
+.menu-btn.active span {
+    box-shadow: 0 0 8px var(--primary), 0 0 16px var(--primary);
+}
+
+/* ===== MOBILE NAV ===== */
+@media (max-width: 768px) {
+
+    /* Show hamburger */
+    .menu-btn {
+        display: flex;
+    }
+
+    /* Hide normal links */
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+
+        flex-direction: column;
+        align-items: center;
+        gap: 22px;
+
+        padding: 25px;
+
+        background: rgba(10,10,10,0.55);
+        backdrop-filter: blur(30px);
+
+        border-radius: 22px;
+        border: 1px solid rgba(0,247,165,0.25);
+
+        box-shadow:
+            0 0 20px rgba(0,247,165,0.15),
+            inset 0 0 20px rgba(0,247,165,0.08);
+
+        transform: translateY(-20px) scale(0.95);
+        opacity: 0;
+        pointer-events: none;
+
+        transition: 0.4s ease;
+    }
+
+    .nav-links.active {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* 🔥 KEY FIX: center the hamburger WITHOUT touching logo */
+    .menu-btn {
+        position: absolute;
+        left: 92%;
+        transform: translateX(-50%);
+    }
+
+    /* ensure navbar is relative */
+    .navbar {
+        position: relative;
+    }
+}
+
+/* ===== NAV FIX ===== */
+.nav-right-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* prevent wrapping */
+.nav-links {
+    flex-wrap: nowrap;
+}
+
+.nav-links a {
+    white-space: nowrap;
+}
+
+/* cart */
+.cart {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+/* ===== MENU BUTTON ===== */
+.menu-btn {
+    width: 34px;
+    height: 24px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.menu-btn span {
+    height: 2px;
+    width: 100%;
+    background: var(--primary);
+    border-radius: 2px;
+    transition: 0.4s ease;
+}
+
+/* morph to Z */
+.menu-btn.active span:nth-child(1) {
+    transform:  rotate(0deg);
+}
+
+.menu-btn.active span:nth-child(2) {
+    transform: rotate(-34.9deg) scaleX(1.19);
+}
+
+.menu-btn.active span:nth-child(3) {
+    transform: rotate(0deg);
+}
+
+.menu-btn.active span {
+    box-shadow: 0 0 8px var(--primary), 0 0 16px var(--primary);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+    .menu-btn {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+    }
+   
+
+    .nav-links.active {
+        display: flex;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+
+        background: rgba(10,10,10,0.6);
+        backdrop-filter: blur(25px);
+
+        border-radius: 20px;
+        border: 1px solid rgba(0,247,165,0.2);
+
+        box-shadow:
+            0 0 20px rgba(0,247,165,0.12),
+            inset 0 0 20px rgba(0,247,165,0.05);
+
+        transform: translateY(-20px) scale(0.95);
+        opacity: 0;
+        pointer-events: none;
+
+        transition: 0.4s ease;
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+    }
+}
+/* CART CONTROL */
+.mobile-cart { 
+    display: none;
+}
+.desktop-cart 
+{ display: inline-block; }
+/* MOBILE BEHAVIOR */
+@media (max-width: 768px) {
+     .desktop-cart {
+         display: none !important; }
+          .mobile-cart { display: inline-block; } }
+/* NEON TOUCH EFFECT (SAFE, NO LAYOUT CHANGE) */
+ .nav-links a {
+     border-radius: 6px;
+    transition: 0.25s ease, 
+    box-shadow 0.25s ease, 
+   
+} 
+.nav-links a:hover {
+     background: rgba(0,247,165,0.08); 
+     box-shadow: 0 0 6px rgb(0, 247, 165), 0 0 14px rgba(0,247,165,0.15); 
+    } 
+    .nav-links a:active {
+         box-shadow: 0 0 10px rgba(0,247,165,0.55);
+        transform: scale(0.97); 
+    }
